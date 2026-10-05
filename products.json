@@ -1,0 +1,62 @@
+[
+{
+"month":"January",
+"name":"TP 300",
+"category":"Automated Tissue Processor"
+},
+{
+"month":"February",
+"name":"AVR",
+"category":"Automatic Staining & Coverslipping"
+},
+{
+"month":"March",
+"name":"Rotary 3006 EM",
+"category":"Electronic Microtome"
+},
+{
+"month":"April",
+"name":"Cryostat",
+"category":"Frozen Section Instrument"
+},
+{
+"month":"May",
+"name":"Embedding Center",
+"category":"Embedding Workstation"
+},
+{
+"month":"June",
+"name":"Slide Stainer",
+"category":"Histology Stainer"
+},
+{
+"month":"July",
+"name":"Coverslipper",
+"category":"Automated Coverslipping"
+},
+{
+"month":"August",
+"name":"Grossing Station",
+"category":"Pathology Grossing"
+},
+{
+"month":"September",
+"name":"Tissue Processor",
+"category":"Laboratory Automation"
+},
+{
+"month":"October",
+"name":"Paraffin Dispenser",
+"category":"Embedding Solution"
+},
+{
+"month":"November",
+"name":"Digital Scanner",
+"category":"Digital Pathology"
+},
+{
+"month":"December",
+"name":"Complete Histopathology Line",
+"category":"Integrated Solution"
+}
+]
