@@ -1,134 +1,174 @@
-const container = document.getElementById("calendar-container");
-
-const products = [
-["January","TP 300","Automated Tissue Processor"],
-["February","AVR","Automatic Staining & Coverslipping"],
-["March","Rotary 3006 EM","Electronic Microtome"],
-["April","Cryostat","Frozen Section Instrument"],
-["May","Embedding Center","Embedding Workstation"],
-["June","Slide Stainer","Histology Stainer"],
-["July","Coverslipper","Automated Coverslipping"],
-["August","Grossing Station","Pathology Grossing"],
-["September","Tissue Processor","Laboratory Automation"],
-["October","Paraffin Dispenser","Embedding Solution"],
-["November","Digital Scanner","Digital Pathology"],
-["December","Complete Histopathology Line","Integrated Solution"]
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
 ];
 
-const year = 2027;
+const calendarContainer =
+    document.getElementById("calendar-container");
 
-products.forEach(product => {
+months.forEach((monthName, monthIndex) => {
 
     const page = document.createElement("div");
     page.className = "calendar-page";
 
     page.innerHTML = `
-    <div class="logo">
-        <h1>ISTOS MEDICAL</h1>
+    
+    <div class="header">
+
+        <div class="company-name">
+            ISTOS MEDICAL
+        </div>
+
     </div>
 
-    <div class="month-title">
-        ${product[0]}
-        <span class="year">${year}</span>
+    <div class="month-row">
+        <div class="month-title">
+            ${monthName.toUpperCase()}
+            <span>2027</span>
+        </div>
     </div>
 
     <div class="content">
 
         <div class="product-info">
 
-            <div class="product-name">${product[1]}</div>
-
-            <div class="product-category">
-            ${product[2]}
+            <div class="product-name">
+                PRODUCT NAME
             </div>
 
+            <div class="product-category">
+                Equipment Category
+            </div>
+
+            <div class="product-divider"></div>
+
             <div class="tagline">
-            Precision.<br>
-            Reliability.<br>
-            Trusted Performance.
+                Precision.<br>
+                Reliability.<br>
+                Trusted Performance.
+            </div>
+
+            <div class="description">
+                Replace this product information each month.
             </div>
 
         </div>
 
         <div class="image-placeholder">
-        Equipment Image Here
+            DROP EQUIPMENT IMAGE HERE
         </div>
 
     </div>
     `;
 
-    const cal = createCalendar(
-        year,
-        new Date(`${product[0]} 1, ${year}`).getMonth()
+    const wrapper = document.createElement("div");
+    wrapper.className = "calendar-wrapper";
+
+    wrapper.appendChild(
+        createCalendar(2027, monthIndex)
     );
 
-    page.appendChild(cal);
+    const note = document.createElement("div");
+    note.className = "footer-note";
 
-    page.innerHTML += `
-    <div class="footer-note">
-    Red dates indicate weekends
-    </div>
+    note.innerHTML =
+        '<span class="red">Red dates:</span> weekends and national holidays';
 
-    <div class="wave"></div>
-    `;
+    wrapper.appendChild(note);
 
-    container.appendChild(page);
+    page.appendChild(wrapper);
+
+    const footer = document.createElement("div");
+    footer.className = "wave-footer";
+
+    page.appendChild(footer);
+
+    calendarContainer.appendChild(page);
 });
 
-function createCalendar(year, month){
 
-    const table = document.createElement('table');
-    table.className="calendar-grid";
+function createCalendar(year, month) {
 
-    let headers =
-    "<tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr>";
+    const table = document.createElement("table");
+    table.className = "calendar-grid";
 
-    table.innerHTML=headers;
+    const days = [
+        "SUN",
+        "MON",
+        "TUE",
+        "WED",
+        "THU",
+        "FRI",
+        "SAT"
+    ];
 
-    let firstDay = new Date(year,month,1).getDay();
+    const headerRow =
+        document.createElement("tr");
 
-    let daysInMonth =
-    new Date(year,month+1,0).getDate();
+    days.forEach(day => {
 
-    let day = 1;
+        const th =
+            document.createElement("th");
 
-    for(let i=0;i<6;i++){
+        th.textContent = day;
 
-        let row=document.createElement('tr');
+        headerRow.appendChild(th);
+    });
 
-        for(let j=0;j<7;j++){
+    table.appendChild(headerRow);
 
-            let cell=document.createElement('td');
+    const firstDay =
+        new Date(year, month, 1).getDay();
 
-            if(i===0 && j<firstDay){
+    const totalDays =
+        new Date(year, month + 1, 0).getDate();
 
-                cell.innerHTML="";
+    let date = 1;
 
-            } else if(day<=daysInMonth){
+    for (let row = 0; row < 6; row++) {
 
-                cell.innerHTML=day;
+        const tr =
+            document.createElement("tr");
 
-                if(j===0||j===6)
-                    cell.classList.add("weekend");
+        for (let col = 0; col < 7; col++) {
 
-                day++;
+            const td =
+                document.createElement("td");
 
+            if (row === 0 && col < firstDay) {
+
+                td.classList.add("empty");
+
+            } else if (date <= totalDays) {
+
+                td.textContent = date;
+
+                if (col === 0 || col === 6) {
+                    td.classList.add("weekend");
+                }
+
+                date++;
+
+            } else {
+
+                td.classList.add("empty");
             }
 
-            row.appendChild(cell);
+            tr.appendChild(td);
         }
 
-        table.appendChild(row);
+        table.appendChild(tr);
     }
 
     return table;
-}
-
-async function exportPDF(){
-
-alert(
-"Use browser print → Save as PDF for highest quality."
-);
-
-window.print();
 }
