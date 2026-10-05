@@ -1,28 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-<title>ISTOS Medical Calendar 2027</title>
- 
-style.css
- 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/.4.1/html2canvas.min.jsscript>
- 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdfript>
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ISTOS Medical Calendar 2027</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src=".cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.jsscript>
 </head>
- 
+
 <body>
- 
-<div id="calendar-container"></div>
- 
-<div class="toolbar">
-<button onclick="exportPDF()">Export PDF</button>
-</div>
- 
-app.jsscript>
- 
-</body>
-</html>
+
+    <div class="toolbar">
+        <button onclick="window.print()">Print / Save PDF</button>
+    </div>
+
+    <div id="calendar-container">
+
+        <div class="calendar-page">
+
+            <!-- Header -->
+            <div class="header">
+                logo.png
+
+                <div class="company-name">
+                    ISTOS MEDICAL
+                </div>
+            </div>
+
+            <!-- Month -->
+            <div class="month-row">
+                <div class="month-title">
+                    JANUARY <span>2027</span>
+                </div>
+            </div>
+
+            <!-- Product + Image -->
+            <div class="content">
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        PRODUCT NAME
+                    </div>
+
+                    <div class="product-category">
+                        Equipment Category
+                    </div>
+
+                    <div class="product-divider"></div>
+
+                    <div class="tagline">
+                        Precision.<br>
+                        Reliability.<br>
+                        Trusted Performance.
+                    </div>
+
+                    <div class="description">
+                        Advanced histopathology solutions delivering
+                        accuracy, efficiency and consistency for
+                        modern laboratories.
+                    </div>
+
+                </div>
+
+                <div class="image-placeholder">
+                    DROP EQUIPMENT IMAGE HERE
+                </div>
+
+            </div>
+
+            <!-- Calendar -->
+            <div class="calendar-wrapper">
+
+                <table class="calendar-grid">
+
+                    <tr>
+                        <th>SUN</th>
+                        <th>MON</th>
+                        <th>TUE</th>
+                        <th>WED</th>
+                        <th>THU</th>
+                        <th>FRI</th>
+                        <th>SAT</th>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td class="weekend">3</td>
+                    </tr>
+
+                    <tr>
+                        <td class="weekend">4</td>
+      
